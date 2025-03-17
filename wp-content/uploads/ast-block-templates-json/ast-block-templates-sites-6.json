@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+        .zipwp-container {
+            width: 100%;
+        }
+
+        .zipwp-row {
+            display: flex;
+        }
+
+        .zipwp-image {
+            width: 100%;
+            height: 100vh;
+            background-image: url( "https://zipwp.com/images/site-image.png" );
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .zipwp-password-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .zipwp-content {
+            width: 48%;
+            background-color: #fff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Figtree, sans-serif;
+        }
+
+        .zipwp-login-container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .zipwp-inner-container {
+            max-width: 100%;
+        }
+
+        .zipwp-heading {
+            margin-bottom: 1rem;
+            font-size: 30px;
+            line-height: 36px;
+            text-align: left;
+        }
+
+        .zipwp-text {
+            color: #777;
+            font-size: 16px;
+            font-weight: 100;
+        }
+
+        .zipwp-submit-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .zipwp-form-control {
+            padding: 0.7rem 1rem;
+            border-radius: 5px;
+            font-size: 16px;
+            border: solid;
+            border-width: 1px;
+            max-width: 100%;
+            font-family: Figtree, sans-serif;
+        }
+
+        .zipwp-btn {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            font-family: Figtree, sans-serif;
+        }
+
+        .zipwp-content-wrap {
+            padding: 40px;
+            font-family: Figtree, sans-serif;
+            font-size: 30px;
+            line-height: 36px;
+            letter-spacing: 0;
+            text-align: left;
+        }
+
+        .zipwp-submit-btn {
+            background-color: #ff6c0a;
+            color: #fff;
+        }
+
+        .zipwp-error-message {
+            visibility: hidden;
+            font-size: 12px;
+            color: #f00;
+            margin: -5px 0 0 0;
+        }
+
+        .zipwp-footer-text {
+            font-family: Figtree, sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .zipwp-footer-text a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        @media only screen and ( max-width: 768px ) {
+            .zipwp-image {
+                display: none;
+            }
+            .zipwp-content {
+                width: 100%;
+                padding: 0;
+            }
+        }
+
+    </style>
+    <script>
+        function handleFormSubmission() {
+            var userInput = document.getElementById("zipwp-input").value.trim().toLowerCase();
+            if (userInput === "ok") {
+                // Random string 12 characters from a-z and 0-9
+                var randomString = Math.random().toString(36).substring(2, 14);
+
+                // Set the cookie if the input is valid
+                document.cookie = "zipwp_access=" + randomString + "; path=/; max-age=691200; Secure; SameSite=Strict";  // 8 days
+                window.location.reload()
+            } else {
+                alert("Please enter 'OK' to proceed.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="zipwp-container">
+        <div class="zipwp-row">
+            <div class="zipwp-content">
+                <div class="zipwp-login-container">
+                    <div class="zipwp-inner-container">
+                        <div class="zipwp-row">
+                            <div class="zipwp-content-wrap">
+                                <img alt="lock" src="https://zipwp.com/images/lock-icon.svg" class="zipwp-password-icon">
+                                <h2 class="zipwp-heading">This website is temporary and not intended for live traffic usage.</h2>
+                                <p class="zipwp-text">To proceed, kindly type <b>“ok”</b> in the box below.</p>
+                                <form class="zipwp-submit-form" method="post" id="zipwp-submit-form" onsubmit="return handleFormSubmission()">
+                                    <input id="zipwp-input" type="text" placeholder="Enter ok" required="" autofocus="" class="zipwp-form-control">
+                                    <p class="zipwp-error-message">The text you entered does not match "ok" Please try again.</p>
+                                    <button type="submit" class="zipwp-btn zipwp-submit-btn">Submit</button>
+                                    <p class="zipwp-footer-text">Powered by <a target="_blank" href="https://zipwp.com/">ZipWP</a></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="zipwp-image"></div>
+        </div>
+    </div>
+</body>
+</html>
